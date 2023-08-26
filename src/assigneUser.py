@@ -62,7 +62,7 @@ def get_user_from_path(path: str):
 
 
 def read_consume_path():
-    file = open('./realsource.txt', 'r')
+    file = open('/usr/src/paperless/scripts/realsource.txt', 'r')
     line = file.readline()
     file.close()
     return line
