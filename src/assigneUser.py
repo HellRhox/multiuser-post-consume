@@ -49,6 +49,7 @@ def get_config():
 
 
 def get_user_from_path(path: str):
+    print(path)
     splitpath = path.split("/")
     if len(splitpath) > 6:
         splitpath = path.split("/")
@@ -77,10 +78,11 @@ if __name__ == "__main__":
         doc_sourcepath = os.environ["DOCUMENT_SOURCE_PATH"]
 
         user = get_user_from_path(doc_sourcepath)
+        print(user)
         if user is None:
             exit()
         else:
-            print(user)
+
             # Update the document
             resp = sess.patch(
                 paperless_url + f"/api/documents/{doc_pk}/",
