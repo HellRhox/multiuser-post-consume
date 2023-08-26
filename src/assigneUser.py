@@ -61,6 +61,13 @@ def get_user_from_path(path: str):
         return None
 
 
+def read_consume_path():
+    file = open('./realsource.txt', 'r')
+    line = file.readline()
+    file.close()
+    return line
+
+
 if __name__ == "__main__":
     config = get_config()
     print(config)
@@ -75,7 +82,7 @@ if __name__ == "__main__":
                          timeout, sess)
         # Get the PK as provided via post-consume
         doc_pk = int(os.environ["DOCUMENT_ID"])
-        doc_sourcepath = os.environ["DOCUMENT_SOURCE_PATH"]
+        doc_sourcepath = read_consume_path()
 
         user = get_user_from_path(doc_sourcepath)
         print(user)
