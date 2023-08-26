@@ -52,10 +52,10 @@ def get_user_from_path(path: str):
     splitpath = path.split("/")
     if len(splitpath) > 6:
         splitpath = path.split("/")
-        if re.search(filepattern, splitpath[len(splitpath)-1]):
+        if re.search(filepattern, splitpath[len(splitpath) - 1]):
             return splitpath[len(splitpath) - 2]
         else:
-            return splitpath[len(splitpath)-1]
+            return splitpath[len(splitpath) - 1]
     else:
         return None
 
@@ -85,6 +85,9 @@ if __name__ == "__main__":
             resp = sess.patch(
                 paperless_url + f"/api/documents/{doc_pk}/",
                 data=json.dumps({"owner": user}),
+                headers={
+                    "Content-Type": "application/json"
+                },
                 timeout=timeout
             )
             resp.raise_for_status()
