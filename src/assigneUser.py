@@ -91,13 +91,13 @@ if __name__ == "__main__":
                                 "owner": user,
                                 "view":
                                     {
-                                        "users": [...],
-                                        "groups": [...],
+                                        "users": [],
+                                        "groups": [],
                                     },
                                 "change":
                                     {
-                                        "users": [...],
-                                        "groups": [...],
+                                        "users": [],
+                                        "groups": [],
                                     }
                             }
                     }
