@@ -68,6 +68,8 @@ def read_consume_path():
     return line
 
 
+# TODO build function to retrieve users from the system and check if path username is among them to get the id
+
 if __name__ == "__main__":
     config = get_config()
     print(config)
