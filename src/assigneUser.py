@@ -80,11 +80,28 @@ if __name__ == "__main__":
         if user is None:
             exit()
         else:
-
+            print(user)
             # Update the document
             resp = sess.patch(
                 paperless_url + f"/api/documents/{doc_pk}/",
-                data=json.dumps({"owner": user}),
+                data=json.dumps(
+                    {
+                        "set_permissions":
+                            {
+                                "owner": user,
+                                "view":
+                                    {
+                                        "users": [...],
+                                        "groups": [...],
+                                    },
+                                "change":
+                                    {
+                                        "users": [...],
+                                        "groups": [...],
+                                    }
+                            }
+                    }
+                ),
                 headers={
                     "Content-Type": "application/json"
                 },
