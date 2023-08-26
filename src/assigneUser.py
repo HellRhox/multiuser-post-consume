@@ -52,10 +52,10 @@ def get_user_from_path(path: str):
     splitpath = path.split("/")
     if len(splitpath) > 6:
         splitpath = path.split("/")
-        if re.search(filepattern, splitpath[len(splitpath)]):
-            return splitpath[len(splitpath) - 1]
+        if re.search(filepattern, splitpath[len(splitpath)-1]):
+            return splitpath[len(splitpath) - 2]
         else:
-            return splitpath[len(splitpath)]
+            return splitpath[len(splitpath)-1]
     else:
         return None
 
