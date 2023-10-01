@@ -79,7 +79,7 @@ def get_user_id(username: str):
     response = response.json()
     print(response)
     for result in response["results"]:
-        if result["name"] == username:
+        if result["username"] == username:
             return result["id"]
 
     return None
