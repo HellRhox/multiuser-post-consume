@@ -75,7 +75,10 @@ def get_user_ID(user):
                         },
                         timeout=timeout
                         )
-    for result in response.json()["results"]:
+    response.raise_for_status()
+    response = response.json()
+    print(response)
+    for result in response["results"]:
         if result["name"] == user:
             return result["id"]
 
