@@ -77,10 +77,12 @@ def get_user_id(username: str):
                         )
     response.raise_for_status()
     response = response.json()
-    print(response)
     for result in response["results"]:
-        if result["username"] == username:
+        if result["username"].lower == username.lower:
+            print("user matched")
             return result["id"]
+        else:
+            continue
 
     return None
 
