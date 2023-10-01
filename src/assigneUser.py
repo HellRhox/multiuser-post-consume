@@ -79,12 +79,13 @@ def get_user_id(username: str):
     response = response.json()
 
     for result in response["results"]:
+        user_match = result["username"].lower() == username.lower()
         print(
             "system user:" + result["username"].lower() +
             " folder user:" + username.lower() +
-            " equals: " + result["username"].lower() == username.lower()
+            " equals: " + user_match
         )
-        if result["username"].lower() == username.lower():
+        if user_match:
             print("user matched")
             return result["id"]
 
