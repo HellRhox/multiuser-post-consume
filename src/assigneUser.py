@@ -68,7 +68,19 @@ def read_consume_path():
     return line
 
 
-# TODO build function to retrieve users from the system and check if path username is among them to get the id
+def get_user_ID(user):
+    response = sess.get(paperless_url + f"/api/users",
+                        headers={
+                            "Content-Type": "application/json"
+                        },
+                        timeout=timeout
+                        )
+    for result in response.json()["results"]:
+        if result["name"] == user:
+            return result["id"]
+
+    return None
+
 
 if __name__ == "__main__":
     config = get_config()
@@ -91,6 +103,9 @@ if __name__ == "__main__":
         if user is None:
             exit()
         else:
+            userId = get_user_ID(user)
+            if userId is None:
+                exit()
 
             # Update the document
             resp = sess.patch(
@@ -99,7 +114,7 @@ if __name__ == "__main__":
                     {
                         "set_permissions":
                             {
-                                "owner": user,
+                                "owner": userId,
                                 "view":
                                     {
                                         "users": [],
