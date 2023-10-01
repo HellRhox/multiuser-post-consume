@@ -80,11 +80,6 @@ def get_user_id(username: str):
 
     for result in response["results"]:
         user_match = result["username"].lower() == username.lower()
-        print(
-            "system user:" + result["username"].lower() +
-            " folder user:" + username.lower() +
-            " equals: " + str(user_match)
-        )
         if user_match:
             print("user matched")
             return result["id"]
@@ -123,20 +118,7 @@ if __name__ == "__main__":
                 paperless_url + f"/api/documents/{doc_pk}/",
                 data=json.dumps(
                     {
-                        "set_permissions":
-                            {
-                                "owner": userId,
-                                "view":
-                                    {
-                                        "users": [],
-                                        "groups": [],
-                                    },
-                                "change":
-                                    {
-                                        "users": [],
-                                        "groups": [],
-                                    }
-                            }
+                        "owner": userId,
                     }
                 ),
                 headers={
@@ -145,3 +127,5 @@ if __name__ == "__main__":
                 timeout=timeout
             )
             resp.raise_for_status()
+
+            print(resp)
