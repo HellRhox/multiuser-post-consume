@@ -83,7 +83,7 @@ def get_user_id(username: str):
         print(
             "system user:" + result["username"].lower() +
             " folder user:" + username.lower() +
-            " equals: " + user_match
+            " equals: " + str(user_match)
         )
         if user_match:
             print("user matched")
