@@ -77,12 +77,17 @@ def get_user_id(username: str):
                         )
     response.raise_for_status()
     response = response.json()
+
     for result in response["results"]:
+        print(
+            "system user:" + result["username"].lower() +
+            " folder user:" + username.lower() +
+            " equals: " + result["username"].lower == username.lower
+        )
         if result["username"].lower == username.lower:
             print("user matched")
             return result["id"]
-        else:
-            continue
+
     print("user not matched")
     return None
 
