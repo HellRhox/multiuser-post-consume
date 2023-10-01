@@ -91,7 +91,7 @@ if __name__ == "__main__":
     paperless_url = config.get("url")
     paperless_username = config.get("name")
     paperless_password = config.get("password")
-    timeout = 5.0
+    timeout = 50.0
 
     with requests.Session() as sess:
         # Set tokens for the appropriate header auth
