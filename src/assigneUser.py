@@ -68,8 +68,8 @@ def read_consume_path():
     return line
 
 
-def get_user_ID(user):
-    response = sess.get(paperless_url + f"/api/users",
+def get_user_id(username: str):
+    response = sess.get(paperless_url + f"/api/users/",
                         headers={
                             "Content-Type": "application/json"
                         },
@@ -79,7 +79,7 @@ def get_user_ID(user):
     response = response.json()
     print(response)
     for result in response["results"]:
-        if result["name"] == user:
+        if result["name"] == username:
             return result["id"]
 
     return None
@@ -106,7 +106,7 @@ if __name__ == "__main__":
         if user is None:
             exit()
         else:
-            userId = get_user_ID(user)
+            userId = get_user_id(user)
             if userId is None:
                 exit()
 
