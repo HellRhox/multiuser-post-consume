@@ -127,5 +127,3 @@ if __name__ == "__main__":
                 timeout=timeout
             )
             resp.raise_for_status()
-
-            print(resp)
